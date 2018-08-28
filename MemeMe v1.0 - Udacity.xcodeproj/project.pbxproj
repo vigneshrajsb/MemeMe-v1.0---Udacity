@@ -7,19 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5078DF4B2135150200268D0A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078DF4A2135150200268D0A /* HomeViewController.swift */; };
 		509220BB2134F8F800766E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509220BA2134F8F800766E30 /* AppDelegate.swift */; };
-		509220BD2134F8F800766E30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509220BC2134F8F800766E30 /* ViewController.swift */; };
 		509220C02134F8F800766E30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509220BE2134F8F800766E30 /* Main.storyboard */; };
-		509220C22134F8FA00766E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509220C12134F8FA00766E30 /* Assets.xcassets */; };
 		509220C52134F8FA00766E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509220C32134F8FA00766E30 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5078DF4A2135150200268D0A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		509220B72134F8F800766E30 /* MemeMe v1.0 - Udacity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MemeMe v1.0 - Udacity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		509220BA2134F8F800766E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		509220BC2134F8F800766E30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		509220BF2134F8F800766E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		509220C12134F8FA00766E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509220C42134F8FA00766E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		509220C62134F8FA00766E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,12 +52,11 @@
 		509220B92134F8F800766E30 /* MemeMe v1.0 - Udacity */ = {
 			isa = PBXGroup;
 			children = (
-				509220BA2134F8F800766E30 /* AppDelegate.swift */,
-				509220BC2134F8F800766E30 /* ViewController.swift */,
+				5078DF4A2135150200268D0A /* HomeViewController.swift */,
 				509220BE2134F8F800766E30 /* Main.storyboard */,
-				509220C12134F8FA00766E30 /* Assets.xcassets */,
 				509220C32134F8FA00766E30 /* LaunchScreen.storyboard */,
 				509220C62134F8FA00766E30 /* Info.plist */,
+				509220BA2134F8F800766E30 /* AppDelegate.swift */,
 			);
 			path = "MemeMe v1.0 - Udacity";
 			sourceTree = "<group>";
@@ -123,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				509220C52134F8FA00766E30 /* LaunchScreen.storyboard in Resources */,
-				509220C22134F8FA00766E30 /* Assets.xcassets in Resources */,
 				509220C02134F8F800766E30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +131,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509220BD2134F8F800766E30 /* ViewController.swift in Sources */,
 				509220BB2134F8F800766E30 /* AppDelegate.swift in Sources */,
+				5078DF4B2135150200268D0A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
