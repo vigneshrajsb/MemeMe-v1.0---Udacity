@@ -38,9 +38,94 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-Ww-43F">
-                                <rect key="frame" x="0.0" y="88" width="375" height="646"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLq-Rk-veq" userLabel="MemeView">
+                                <rect key="frame" x="0.0" y="204" width="375" height="414"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-Ww-43F">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gog-51-wcw">
+                                        <rect key="frame" x="105.99999999999999" y="364" width="162.66666666666663" height="24.666666666666686"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Bottom Meme Text">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="36" name="Helvetica"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-Z5-gZ6">
+                                        <rect key="frame" x="119" y="25.333333333333343" width="136" height="24.666666666666671"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Top Meme Text">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="36" name="Helvetica"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4ng-Ww-43F" firstAttribute="top" secondItem="uLq-Rk-veq" secondAttribute="top" id="1bH-Wz-6a2"/>
+                                    <constraint firstItem="Gog-51-wcw" firstAttribute="centerX" secondItem="4ng-Ww-43F" secondAttribute="centerX" id="9dF-wV-0w0"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ng-Ww-43F" secondAttribute="trailing" id="IR6-sR-Asp"/>
+                                    <constraint firstItem="H5E-Z5-gZ6" firstAttribute="centerX" secondItem="4ng-Ww-43F" secondAttribute="centerX" id="OIY-rL-12O"/>
+                                    <constraint firstItem="4ng-Ww-43F" firstAttribute="top" secondItem="H5E-Z5-gZ6" secondAttribute="bottom" constant="-50" id="ifw-PY-AYy"/>
+                                    <constraint firstItem="Gog-51-wcw" firstAttribute="top" secondItem="4ng-Ww-43F" secondAttribute="bottom" constant="-50" id="ipW-n8-mkB"/>
+                                    <constraint firstItem="4ng-Ww-43F" firstAttribute="leading" secondItem="uLq-Rk-veq" secondAttribute="leading" id="mKC-HA-whZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ng-Ww-43F" secondAttribute="bottom" id="qtb-xF-Qyb"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjO-DZ-etS" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="734" width="375" height="44"/>
                                 <constraints>
@@ -68,28 +153,35 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="pjO-DZ-etS" firstAttribute="top" secondItem="uLq-Rk-veq" secondAttribute="bottom" constant="116" id="4j9-tO-RHf"/>
                             <constraint firstItem="pjO-DZ-etS" firstAttribute="trailing" secondItem="B1q-Eq-ApA" secondAttribute="trailing" id="AyS-i6-CwQ"/>
-                            <constraint firstItem="4ng-Ww-43F" firstAttribute="top" secondItem="bNH-gc-xO6" secondAttribute="bottom" id="Ddp-CZ-i8W"/>
                             <constraint firstItem="pjO-DZ-etS" firstAttribute="leading" secondItem="B1q-Eq-ApA" secondAttribute="leading" id="Gwg-Sy-2AX"/>
+                            <constraint firstItem="uLq-Rk-veq" firstAttribute="centerX" secondItem="B1q-Eq-ApA" secondAttribute="centerX" id="J0v-a5-jLl"/>
+                            <constraint firstItem="uLq-Rk-veq" firstAttribute="top" secondItem="bNH-gc-xO6" secondAttribute="bottom" constant="116" id="N1w-3e-mFe"/>
                             <constraint firstItem="eEl-8b-qBU" firstAttribute="bottom" secondItem="pjO-DZ-etS" secondAttribute="bottom" id="QvY-4e-Kvc"/>
-                            <constraint firstItem="4ng-Ww-43F" firstAttribute="trailing" secondItem="eEl-8b-qBU" secondAttribute="trailing" id="XAu-gS-444"/>
-                            <constraint firstItem="pjO-DZ-etS" firstAttribute="top" secondItem="4ng-Ww-43F" secondAttribute="bottom" id="fIH-yK-HJM"/>
+                            <constraint firstItem="uLq-Rk-veq" firstAttribute="leading" secondItem="eEl-8b-qBU" secondAttribute="leading" id="SwL-zx-OJJ"/>
                             <constraint firstItem="bNH-gc-xO6" firstAttribute="leading" secondItem="B1q-Eq-ApA" secondAttribute="leading" id="kI2-Fr-Pn3"/>
-                            <constraint firstItem="4ng-Ww-43F" firstAttribute="leading" secondItem="eEl-8b-qBU" secondAttribute="leading" id="nLi-kF-caN"/>
+                            <constraint firstItem="eEl-8b-qBU" firstAttribute="trailing" secondItem="uLq-Rk-veq" secondAttribute="trailing" id="r5u-rw-TbX"/>
                             <constraint firstItem="bNH-gc-xO6" firstAttribute="top" secondItem="eEl-8b-qBU" secondAttribute="top" id="ydD-ie-4oH"/>
                             <constraint firstItem="bNH-gc-xO6" firstAttribute="trailing" secondItem="B1q-Eq-ApA" secondAttribute="trailing" id="z3S-Dd-PG5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eEl-8b-qBU"/>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="Gog-51-wcw" id="i49-5j-P6p"/>
+                        <outlet property="cameraButton" destination="jac-jc-N7h" id="vmt-o2-IzU"/>
                         <outlet property="cancelButton" destination="r5U-60-Vls" id="KUq-Sd-oHg"/>
+                        <outlet property="constraintMemeViewTobottomBar" destination="4j9-tO-RHf" id="pvw-S8-EAx"/>
+                        <outlet property="constraintTopBartoMemeView" destination="N1w-3e-mFe" id="TTT-ft-94y"/>
+                        <outlet property="memeView" destination="uLq-Rk-veq" id="m0K-ei-OZd"/>
                         <outlet property="selectedImageView" destination="4ng-Ww-43F" id="FCN-SO-6eU"/>
                         <outlet property="shareButton" destination="yoM-2w-ZdM" id="ycq-Ih-QNB"/>
+                        <outlet property="topTextField" destination="H5E-Z5-gZ6" id="cs4-Iu-lyM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJL-tc-2wS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="-123"/>
+            <point key="canvasLocation" x="2252" y="-123.39901477832512"/>
         </scene>
     </scenes>
 </document>

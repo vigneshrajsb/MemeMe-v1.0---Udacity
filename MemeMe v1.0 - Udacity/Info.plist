@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To save the Memes</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library access needed to select pictures from your alnum</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access needed to Memefy pictures straight from camera</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
