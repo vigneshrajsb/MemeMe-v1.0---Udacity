@@ -30,7 +30,13 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1Sr-b9-uMu"/>
-                                    <barButtonItem systemItem="cancel" id="r5U-60-Vls">
+                                    <barButtonItem systemItem="compose" id="OAB-6W-agI" userLabel="Settings Button">
+                                        <connections>
+                                            <segue destination="hBW-kS-Pmz" kind="show" identifier="toSettings" id="A2C-gH-bOo"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="6d6-ES-0Bb"/>
+                                    <barButtonItem systemItem="trash" id="r5U-60-Vls">
                                         <color key="tintColor" red="1" green="0.0" blue="0.093322322279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="cancelTapped:" destination="Akp-z5-2fa" id="xBd-xX-44b"/>
@@ -44,12 +50,12 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-Ww-43F">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gog-51-wcw">
-                                        <rect key="frame" x="105.99999999999999" y="364" width="162.66666666666663" height="24.666666666666686"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gog-51-wcw">
+                                        <rect key="frame" x="8" y="364" width="358.66666666666669" height="44.333333333333314"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Bottom Meme Text">
+                                            <fragment content="Bottom text for Meme">
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="36" name="Helvetica"/>
@@ -59,55 +65,16 @@
                                         </attributedString>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-Z5-gZ6">
-                                        <rect key="frame" x="119" y="25.333333333333343" width="136" height="24.666666666666671"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" borderStyle="bezel" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-Z5-gZ6">
+                                        <rect key="frame" x="8" y="3.3333333333333428" width="359" height="46.666666666666664"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Top Meme Text">
+                                            <fragment content="Top text for Meme">
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="36" name="Helvetica"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="28">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="56">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="84">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="112">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="140">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="168">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="196">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="224">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="280">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="308">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="336">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -117,11 +84,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="4ng-Ww-43F" firstAttribute="top" secondItem="uLq-Rk-veq" secondAttribute="top" id="1bH-Wz-6a2"/>
+                                    <constraint firstAttribute="trailing" secondItem="H5E-Z5-gZ6" secondAttribute="trailing" constant="8" id="3JU-X4-UlA"/>
                                     <constraint firstItem="Gog-51-wcw" firstAttribute="centerX" secondItem="4ng-Ww-43F" secondAttribute="centerX" id="9dF-wV-0w0"/>
                                     <constraint firstAttribute="trailing" secondItem="4ng-Ww-43F" secondAttribute="trailing" id="IR6-sR-Asp"/>
+                                    <constraint firstItem="Gog-51-wcw" firstAttribute="leading" secondItem="uLq-Rk-veq" secondAttribute="leading" constant="8" id="L8t-Pa-aUK"/>
                                     <constraint firstItem="H5E-Z5-gZ6" firstAttribute="centerX" secondItem="4ng-Ww-43F" secondAttribute="centerX" id="OIY-rL-12O"/>
+                                    <constraint firstItem="H5E-Z5-gZ6" firstAttribute="leading" secondItem="uLq-Rk-veq" secondAttribute="leading" constant="8" id="d0g-BO-3xq"/>
                                     <constraint firstItem="4ng-Ww-43F" firstAttribute="top" secondItem="H5E-Z5-gZ6" secondAttribute="bottom" constant="-50" id="ifw-PY-AYy"/>
                                     <constraint firstItem="Gog-51-wcw" firstAttribute="top" secondItem="4ng-Ww-43F" secondAttribute="bottom" constant="-50" id="ipW-n8-mkB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gog-51-wcw" secondAttribute="trailing" constant="8" id="jhG-4Y-9We"/>
                                     <constraint firstItem="4ng-Ww-43F" firstAttribute="leading" secondItem="uLq-Rk-veq" secondAttribute="leading" id="mKC-HA-whZ"/>
                                     <constraint firstAttribute="bottom" secondItem="4ng-Ww-43F" secondAttribute="bottom" id="qtb-xF-Qyb"/>
                                 </constraints>
@@ -169,19 +140,202 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="Gog-51-wcw" id="i49-5j-P6p"/>
+                        <outlet property="bottomToolbar" destination="pjO-DZ-etS" id="upo-9i-fsp"/>
                         <outlet property="cameraButton" destination="jac-jc-N7h" id="vmt-o2-IzU"/>
                         <outlet property="cancelButton" destination="r5U-60-Vls" id="KUq-Sd-oHg"/>
+                        <outlet property="constraintMemeViewLeading" destination="SwL-zx-OJJ" id="w02-Gc-NcE"/>
                         <outlet property="constraintMemeViewTobottomBar" destination="4j9-tO-RHf" id="pvw-S8-EAx"/>
+                        <outlet property="constraintMemeViewTrailing" destination="r5u-rw-TbX" id="Fr5-Zy-nbS"/>
                         <outlet property="constraintTopBartoMemeView" destination="N1w-3e-mFe" id="TTT-ft-94y"/>
                         <outlet property="memeView" destination="uLq-Rk-veq" id="m0K-ei-OZd"/>
                         <outlet property="selectedImageView" destination="4ng-Ww-43F" id="FCN-SO-6eU"/>
+                        <outlet property="settingsButton" destination="OAB-6W-agI" id="mF3-dr-6LG"/>
                         <outlet property="shareButton" destination="yoM-2w-ZdM" id="ycq-Ih-QNB"/>
                         <outlet property="topTextField" destination="H5E-Z5-gZ6" id="cs4-Iu-lyM"/>
+                        <outlet property="topToolBar" destination="bNH-gc-xO6" id="zBE-bs-tsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJL-tc-2wS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2252" y="-123.39901477832512"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="LWx-kI-hQZ">
+            <objects>
+                <viewController id="hBW-kS-Pmz" customClass="SettingsViewController" customModule="MemeMe_v1_0___Udacity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o6W-6L-V29">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-cN-h3Z">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="sEu-Kb-bRa">
+                                        <connections>
+                                            <action selector="backPressed:" destination="hBW-kS-Pmz" id="Adf-LA-xP3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0GM-QE-Vtq"/>
+                                    <barButtonItem title="Done" id="4h7-O0-fia">
+                                        <connections>
+                                            <action selector="doneTapped:" destination="hBW-kS-Pmz" id="IFv-gc-S87"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU0-4g-afA" userLabel="Settings View">
+                                <rect key="frame" x="38.333333333333343" y="216" width="300" height="176.66666666666663"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yq9-1o-j4q" userLabel="Vertical Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="176.66666666666666"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Ayb-B2-wUo" userLabel="Font Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="21.666666666666668"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-YL-BYy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="137.66666666666666" height="21.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uR8-PD-fB9" customClass="CustomTextField" customModule="MemeMe_v1_0___Udacity" customModuleProvider="target">
+                                                        <rect key="frame" x="162.66666666666663" y="0.0" width="137.33333333333337" height="21.666666666666668"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="HelveticaNeue">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="18" name=".SFNSText"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="cWx-7d-mud" userLabel="Color Stack View">
+                                                <rect key="frame" x="0.0" y="51.666666666666686" width="300" height="21.666666666666671"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4Q-Rc-P7o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="137.66666666666666" height="21.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPB-XH-Q9O" customClass="CustomTextField" customModule="MemeMe_v1_0___Udacity" customModuleProvider="target">
+                                                        <rect key="frame" x="162.66666666666663" y="0.0" width="137.33333333333337" height="21.666666666666668"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Color">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="F54-ca-CRq" userLabel="Border Color Stack View">
+                                                <rect key="frame" x="0.0" y="103.33333333333331" width="300" height="21.666666666666671"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Border Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfw-ni-tNX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="137.66666666666666" height="21.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T31-F7-Nbb" customClass="CustomTextField" customModule="MemeMe_v1_0___Udacity" customModuleProvider="target">
+                                                        <rect key="frame" x="162.66666666666663" y="0.0" width="137.33333333333337" height="21.666666666666668"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Color">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="DkH-Fc-0Eo" userLabel="Border Width Stack View">
+                                                <rect key="frame" x="0.0" y="155" width="300" height="21.666666666666657"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Border Width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-n1-dZF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="137.66666666666666" height="21.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kva-SR-edd" customClass="CustomTextField" customModule="MemeMe_v1_0___Udacity" customModuleProvider="target">
+                                                        <rect key="frame" x="162.66666666666663" y="0.0" width="137.33333333333337" height="21.666666666666668"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Width">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="3iB-Zn-1A1"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yq9-1o-j4q" firstAttribute="leading" secondItem="hU0-4g-afA" secondAttribute="leading" id="DIM-UX-1O5"/>
+                                    <constraint firstAttribute="bottom" secondItem="yq9-1o-j4q" secondAttribute="bottom" id="TPv-6G-14v"/>
+                                    <constraint firstAttribute="trailing" secondItem="yq9-1o-j4q" secondAttribute="trailing" id="ZMG-d9-52Y"/>
+                                    <constraint firstItem="yq9-1o-j4q" firstAttribute="top" secondItem="hU0-4g-afA" secondAttribute="top" id="cXx-fa-UlX"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" usesAttributedText="YES" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8S-A6-ytl">
+                                <rect key="frame" x="37.666666666666657" y="96" width="300" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="SHr-3B-Zaw"/>
+                                    <constraint firstAttribute="height" constant="65" id="r20-td-C2c"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Sample Text">
+                                        <attributes>
+                                            <font key="NSFont" size="40" name="HelveticaNeue-CondensedBlack"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hU0-4g-afA" firstAttribute="centerX" secondItem="o6W-6L-V29" secondAttribute="centerX" id="4sW-YP-bA8"/>
+                            <constraint firstItem="Nv9-cN-h3Z" firstAttribute="top" secondItem="BHa-5b-AAg" secondAttribute="top" id="OHL-S0-PWN"/>
+                            <constraint firstItem="Nv9-cN-h3Z" firstAttribute="trailing" secondItem="BHa-5b-AAg" secondAttribute="trailing" id="Yzt-TL-PSh"/>
+                            <constraint firstItem="Nv9-cN-h3Z" firstAttribute="leading" secondItem="BHa-5b-AAg" secondAttribute="leading" id="eKH-F4-K9U"/>
+                            <constraint firstItem="hU0-4g-afA" firstAttribute="top" secondItem="k8S-A6-ytl" secondAttribute="bottom" constant="55" id="hDj-Ep-lNi"/>
+                            <constraint firstItem="k8S-A6-ytl" firstAttribute="top" secondItem="Nv9-cN-h3Z" secondAttribute="bottom" constant="8" id="mF2-nN-LCf"/>
+                            <constraint firstItem="k8S-A6-ytl" firstAttribute="centerX" secondItem="o6W-6L-V29" secondAttribute="centerX" id="olN-KJ-OK2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BHa-5b-AAg"/>
+                    </view>
+                    <connections>
+                        <outlet property="borderColorTextField" destination="T31-F7-Nbb" id="HHz-Ay-HV6"/>
+                        <outlet property="borderWidthTextField" destination="kva-SR-edd" id="Zew-tV-Sxi"/>
+                        <outlet property="colorTextField" destination="OPB-XH-Q9O" id="vF3-AL-D5j"/>
+                        <outlet property="fontTextField" destination="uR8-PD-fB9" id="FDN-zD-iSf"/>
+                        <outlet property="landscapeDoneButton" destination="4h7-O0-fia" id="zJP-Kv-87c"/>
+                        <outlet property="sampleTextField" destination="k8S-A6-ytl" id="sZj-Xw-HfN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W7L-Yv-dku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3072.8000000000002" y="-123.39901477832512"/>
         </scene>
     </scenes>
 </document>

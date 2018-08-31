@@ -8,10 +8,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -19,24 +20,22 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var memeView: UIView!
     
+    @IBOutlet weak var topToolBar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     //constraints
     @IBOutlet weak var constraintTopBartoMemeView: NSLayoutConstraint!
     @IBOutlet weak var constraintMemeViewTobottomBar: NSLayoutConstraint!
-    
+    @IBOutlet weak var constraintMemeViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var constraintMemeViewLeading: NSLayoutConstraint!
     
     
     let imagePicker = UIImagePickerController()
-    let attributeTextDictionary : [String:Any] = [
-        NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
-        NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
-        NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40),
-        NSAttributedStringKey.strokeWidth.rawValue : -2.0
-    ]
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayoutConstraints()
+        //viewWillLayoutSubviews()
         setImagePickerDelegate()
         setTextFieldDelegateAndAttribute()
         setObserversForKeyboard()
@@ -48,18 +47,48 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //removeObserversForKeyboardNotification()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setTextFieldAttributes()
+    }
     
-    func setupLayoutConstraints() {
-        constraintTopBartoMemeView.constant = 116
-        constraintMemeViewTobottomBar.constant = 116
+    func setupPortraitLayoutConstraints() {
+        let width = view.safeAreaLayoutGuide.layoutFrame.width
+        let height = view.safeAreaLayoutGuide.layoutFrame.height
+        let topToolBarHeight = topToolBar.frame.height
+        let bottomToolbarHeight = bottomToolbar.frame.height
+        
+        let const = (height - (topToolBarHeight + bottomToolbarHeight) - width) / 2
+
+        constraintTopBartoMemeView.constant = const
+        constraintMemeViewTobottomBar.constant = const
+        constraintMemeViewTrailing.constant = 0
+        constraintMemeViewLeading.constant = 0
+        //print("Height: \(selectedImageView.frame.height) -- Width: \(selectedImageView.frame.width)")
+    }
+    
+    
+    func setupLandscapeLayoutConstraints() {
+        let height = view.safeAreaLayoutGuide.layoutFrame.height
+        let width = view.safeAreaLayoutGuide.layoutFrame.width
+        let topToolbarHeight = topToolBar.frame.height
+        let bottomToolbarHeight = bottomToolbar.frame.height
+        
+        let const = (width - (height - topToolbarHeight - bottomToolbarHeight)) / 2
+
+        constraintTopBartoMemeView.constant = 0
+        constraintMemeViewTobottomBar.constant = 0
+        constraintMemeViewLeading.constant = const
+        constraintMemeViewTrailing.constant = const
+        
+        //print("Height: \(selectedImageView.frame.height) -- Width: \(selectedImageView.frame.width)")
+        
     }
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-            constraintTopBartoMemeView.constant = 0
-            constraintMemeViewTobottomBar.constant = 0
+          setupLandscapeLayoutConstraints()
         } else {
-            setupLayoutConstraints()
+            setupPortraitLayoutConstraints()
         }
     }
     
@@ -69,16 +98,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.allowsEditing = true
     }
     
-    func setTextFieldDelegateAndAttribute() {
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-    
-        
-        topTextField.defaultTextAttributes = attributeTextDictionary
-        bottomTextField.defaultTextAttributes = attributeTextDictionary
-    }
-    
-    
+
     //MARK: - Keyboard Layouts
     func setObserversForKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -120,7 +140,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
         topTextField.text = "Top text for Meme"
-        bottomTextField.text = "Bottom Text for Meme"
+        bottomTextField.text = "Bottom text for Meme"
         
         //check camera source
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -165,19 +185,44 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
+
     @IBAction func cancelTapped(_ sender: Any) {
         selectedImageView.image = nil
         initializeUI()
     }
     
-    //MARK: - ImagePicker Delegate methods
+    
+    //    func save() {
+    //        if let image = selectedImageView.image {
+    //        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: image, memedImage: image)
+    //        }
+    //    }
+    
+    
+    func createMemedImage() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(memeView.bounds.size, memeView.isOpaque, 0.0)
+        memeView.drawHierarchy(in: memeView.bounds, afterScreenUpdates: false)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
+            fatalError("Error with creating Meme!")
+        }
+        
+        UIGraphicsEndImageContext()
+        return image
+        
+    }
+    
+}
+
+//MARK: - Extension for ImagePicker Delegate methods
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.selectedImageView.image = image
         }
         dismiss(animated: true) {
             self.initializeUI()
+            self.setTextFieldAttributes()
         }
     }
     
@@ -186,57 +231,43 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.initializeUI()
         }
     }
+}
+
+//MARK: - Extension for TextField Delegate methods
+extension HomeViewController: UITextFieldDelegate {
     
-    
-    //MARK: - TextField Delegate methods
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+    func setTextFieldDelegateAndAttribute() {
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        setTextFieldAttributes()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+     
+        let existingText = textField.text ?? ""
+        if existingText == "Top text for Meme" || existingText == "Bottom text for Meme" {
+                   textField.text = ""
+        }
+           setTextFieldAttributes()
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let characterCount = textField.text?.count else { return false }
+        setTextFieldAttributes()
+        return characterCount < 40
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-//    func save() {
-//        if let image = selectedImageView.image {
-//        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: image, memedImage: image)
-//        }
-//    }
-    
-    
-    func createMemedImage() -> UIImage {
-        print(memeView.bounds)
-        
-        UIGraphicsBeginImageContextWithOptions(memeView.bounds.size, memeView.isOpaque, 0.0)
-        memeView.drawHierarchy(in: memeView.bounds, afterScreenUpdates: false)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-            fatalError("Error with creating s Meme!")
-        }
-        
-        UIGraphicsEndImageContext()
-        return image
-        
+    func setTextFieldAttributes() {
+        topTextField.defaultTextAttributes = attributeTextDictionary
+        bottomTextField.defaultTextAttributes = attributeTextDictionary
     }
-    
-//    @IBAction func savePressed(_ sender: Any) {
-//        createMemedImage()
-//    }
-    
 }
 
 
-struct Meme {
-    var topText: String
-    var bottomText: String
-    let originalImage: UIImage
-    var memedImage: UIImage
-    
-    init(topText: String, bottomText: String, originalImage: UIImage, memedImage: UIImage){
-        self.topText = topText
-        self.bottomText = bottomText
-        self.originalImage = originalImage
-        self.memedImage = memedImage
-    }
-}
