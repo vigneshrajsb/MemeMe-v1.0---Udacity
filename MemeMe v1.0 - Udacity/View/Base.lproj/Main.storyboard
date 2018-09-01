@@ -125,16 +125,16 @@
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pjO-DZ-etS" firstAttribute="top" secondItem="uLq-Rk-veq" secondAttribute="bottom" constant="116" id="4j9-tO-RHf"/>
-                            <constraint firstItem="pjO-DZ-etS" firstAttribute="trailing" secondItem="B1q-Eq-ApA" secondAttribute="trailing" id="AyS-i6-CwQ"/>
-                            <constraint firstItem="pjO-DZ-etS" firstAttribute="leading" secondItem="B1q-Eq-ApA" secondAttribute="leading" id="Gwg-Sy-2AX"/>
+                            <constraint firstItem="pjO-DZ-etS" firstAttribute="trailing" secondItem="eEl-8b-qBU" secondAttribute="trailing" id="AyS-i6-CwQ"/>
+                            <constraint firstItem="pjO-DZ-etS" firstAttribute="leading" secondItem="eEl-8b-qBU" secondAttribute="leading" id="Gwg-Sy-2AX"/>
                             <constraint firstItem="uLq-Rk-veq" firstAttribute="centerX" secondItem="B1q-Eq-ApA" secondAttribute="centerX" id="J0v-a5-jLl"/>
                             <constraint firstItem="uLq-Rk-veq" firstAttribute="top" secondItem="bNH-gc-xO6" secondAttribute="bottom" constant="116" id="N1w-3e-mFe"/>
                             <constraint firstItem="eEl-8b-qBU" firstAttribute="bottom" secondItem="pjO-DZ-etS" secondAttribute="bottom" id="QvY-4e-Kvc"/>
                             <constraint firstItem="uLq-Rk-veq" firstAttribute="leading" secondItem="eEl-8b-qBU" secondAttribute="leading" id="SwL-zx-OJJ"/>
-                            <constraint firstItem="bNH-gc-xO6" firstAttribute="leading" secondItem="B1q-Eq-ApA" secondAttribute="leading" id="kI2-Fr-Pn3"/>
+                            <constraint firstItem="bNH-gc-xO6" firstAttribute="leading" secondItem="eEl-8b-qBU" secondAttribute="leading" id="kI2-Fr-Pn3"/>
                             <constraint firstItem="eEl-8b-qBU" firstAttribute="trailing" secondItem="uLq-Rk-veq" secondAttribute="trailing" id="r5u-rw-TbX"/>
                             <constraint firstItem="bNH-gc-xO6" firstAttribute="top" secondItem="eEl-8b-qBU" secondAttribute="top" id="ydD-ie-4oH"/>
-                            <constraint firstItem="bNH-gc-xO6" firstAttribute="trailing" secondItem="B1q-Eq-ApA" secondAttribute="trailing" id="z3S-Dd-PG5"/>
+                            <constraint firstItem="bNH-gc-xO6" firstAttribute="trailing" secondItem="eEl-8b-qBU" secondAttribute="trailing" id="z3S-Dd-PG5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eEl-8b-qBU"/>
                     </view>
@@ -299,6 +299,7 @@
                         <outlet property="borderColorTextField" destination="T31-F7-Nbb" id="HHz-Ay-HV6"/>
                         <outlet property="borderWidthTextField" destination="kva-SR-edd" id="Zew-tV-Sxi"/>
                         <outlet property="colorTextField" destination="OPB-XH-Q9O" id="vF3-AL-D5j"/>
+                        <outlet property="constraintSampleTextToSettingsStack" destination="hDj-Ep-lNi" id="W5H-M0-hRK"/>
                         <outlet property="fontTextField" destination="uR8-PD-fB9" id="FDN-zD-iSf"/>
                         <outlet property="sampleTextField" destination="k8S-A6-ytl" id="sZj-Xw-HfN"/>
                     </connections>

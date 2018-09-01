@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var borderColorTextField: CustomTextField!
     @IBOutlet weak var borderWidthTextField: CustomTextField!
     @IBOutlet weak var sampleTextField: UITextField!
+    @IBOutlet weak var constraintSampleTextToSettingsStack: NSLayoutConstraint!
     let picker = UIPickerView()
     let toolbar = UIToolbar()
     
@@ -57,10 +58,17 @@ class SettingsViewController: UIViewController {
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolbar.setItems([space,button], animated: true)
         toolbar.isUserInteractionEnabled = true
+        toolbar.frame = CGRect(x: 0, y: 0, width: view.safeAreaLayoutGuide.layoutFrame.width, height: 44.0)
     }
     
     //MARK: - Modify UI when the device changes orientation
     override func viewWillLayoutSubviews() {
+        if UIDevice.current.orientation.isLandscape {
+            constraintSampleTextToSettingsStack.constant = 20.0
+        } else {
+            constraintSampleTextToSettingsStack.constant = 55.0
+        }
+        
         let value = UIDevice.current.orientation.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         SettingsViewController.attemptRotationToDeviceOrientation()
@@ -123,6 +131,7 @@ extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         picker.delegate = self
         picker.dataSource = self
         picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.frame = CGRect(x: 0, y: 0, width: view.safeAreaLayoutGuide.layoutFrame.width, height: 162.0)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
