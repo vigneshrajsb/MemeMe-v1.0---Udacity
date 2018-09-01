@@ -8,188 +8,82 @@
 
 import UIKit
 
+//MARK: - Global variables
 var attributeTextDictionary : [String:Any]  = [
     NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
     NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
-    NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40) ?? UIFont.systemFont(ofSize: 40),
+    NSAttributedStringKey.font.rawValue : UIFont(name: "Impact", size: 40) ?? UIFont.systemFont(ofSize: 40),
     NSAttributedStringKey.strokeWidth.rawValue : -2.0
-]
+    ]
 
-var pickedFont = "HelveticaNeue"
+//Initializing values to use for default attributes
+var pickedFont = "Impact"
 var pickedColor = "White"
 var pickedBorderColor = "Black"
 var pickedBorderWidth = "2"
 
-class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class SettingsViewController: UIViewController {
 
-    
-    @IBOutlet weak var sampleLabel: UILabel!
     @IBOutlet weak var fontTextField: CustomTextField!
     @IBOutlet weak var colorTextField: CustomTextField!
     @IBOutlet weak var borderColorTextField: CustomTextField!
     @IBOutlet weak var borderWidthTextField: CustomTextField!
     @IBOutlet weak var landscapeDoneButton: UIBarButtonItem!
-    
     @IBOutlet weak var sampleTextField: UITextField!
-    
     
     let picker = UIPickerView()
     let toolbar = UIToolbar()
     
-    let fonts = ["HelveticaNeue", "ChalkboardSE", "Futura"]
-    let colorsArray = ["White", "Black", "Red", "Blue"]
+    //List of values needed for each attribute
+    let fonts = ["Impact", "HelveticaNeue", "ChalkboardSE", "Futura"]
+    let colorsArray = ["White", "Black", "Red", "Blue", "Green"]
     let widthArray = [-1,-2,-3]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded")
-//        sampleLabel.attributedText = NSAttributedString(string: "Sample Text", attributes: attributeTextDictionary )
-     
-        picker.delegate = self
-        picker.dataSource = self
-        fontTextField.inputView = picker
-        colorTextField.inputView = picker
-        borderColorTextField.inputView = picker
-        borderWidthTextField.inputView = picker
+        initializeUI()
+    }
+    
+    func initializeUI() {
+        setupPicker()
         setupToolbar()
-        
-        fontTextField.delegate = self
-        colorTextField.delegate = self
-        borderColorTextField.delegate = self
-        borderWidthTextField.delegate = self
-        
-        fontTextField.text = pickedFont
-        colorTextField.text = pickedColor
-        borderWidthTextField.text = pickedBorderWidth
-        borderColorTextField.text = pickedBorderColor
-        
-        sampleTextField.textAlignment = .right
-        sampleTextField.contentVerticalAlignment = .center
-        sampleTextField.defaultTextAttributes = attributeTextDictionary
-        sampleTextField.isUserInteractionEnabled = false
-        
-        print(Width.Light.rawValue)
-        
-        print("\(pickedFont) -- \(pickedColor) -- \(pickedBorderColor) -- \(pickedBorderWidth)")
-        
+        setupTextFields()
     }
     
-    override func viewDidLayoutSubviews() {
-        fontTextField.text = pickedFont
-        colorTextField.text = pickedColor
-        borderWidthTextField.text = pickedBorderWidth
-        borderColorTextField.text = pickedBorderColor
-        
-        sampleTextField.textAlignment = .right
-        sampleTextField.contentVerticalAlignment = .center
-        sampleTextField.defaultTextAttributes = attributeTextDictionary
-        sampleTextField.isUserInteractionEnabled = false
-    }
-    
-    
-
     func setupToolbar() {
+        //setting up the input accessory view
         toolbar.sizeToFit()
         let button = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolbar.setItems([space,button], animated: true)
         toolbar.isUserInteractionEnabled = true
-        
-        fontTextField.inputAccessoryView = toolbar
-        colorTextField.inputAccessoryView = toolbar
-        borderColorTextField.inputAccessoryView = toolbar
-        borderWidthTextField.inputAccessoryView = toolbar
     }
     
+    //MARK: - Modify UI when the device changes orientation
     override func viewWillLayoutSubviews() {
         let isLandscape = UIDevice.current.orientation.isLandscape
         landscapeDoneButton.isEnabled = isLandscape
         landscapeDoneButton.tintColor = isLandscape ? nil : .clear
         fontTextField.inputAccessoryView = isLandscape ? nil : toolbar
-            colorTextField.inputAccessoryView = isLandscape ? nil : toolbar
-            borderColorTextField.inputAccessoryView = isLandscape ? nil : toolbar
-            borderWidthTextField.inputAccessoryView = isLandscape ? nil : toolbar
-    
-        
+        colorTextField.inputAccessoryView = isLandscape ? nil : toolbar
+        borderColorTextField.inputAccessoryView = isLandscape ? nil : toolbar
+        borderWidthTextField.inputAccessoryView = isLandscape ? nil : toolbar
     }
     
-    
+    //MARK: - Actions for Bar buttons
     @IBAction func doneTapped(_ sender: Any) {
-       
-       
-    
         dismissKeyboard()
     }
     
     @objc func dismissKeyboard() {
-        picker.selectRow(0, inComponent: 0, animated: true)
         view.endEditing(true)
     }
-    
     
     @IBAction func backPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if fontTextField.isFirstResponder {
-        return fonts.count
-        } else if colorTextField.isFirstResponder || borderColorTextField.isFirstResponder {
-            return colorsArray.count
-        } else if borderWidthTextField.isFirstResponder {
-            return widthArray.count
-        }
-        return 0
-    }
-
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if fontTextField.isFirstResponder {
-            return fonts[row]
-        } else if colorTextField.isFirstResponder || borderColorTextField.isFirstResponder {
-            return colorsArray[row]
-        } else if borderWidthTextField.isFirstResponder {
-            return String(widthArray[row] * -1)
-        }
-        return "Error"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if fontTextField.isFirstResponder {
-
-            fontTextField.text = fonts[row]
-             pickedFont = fontTextField.text ?? "HelveticaNeue"
-            attributeTextDictionary[NSAttributedStringKey.font.rawValue] = UIFont(name: getFontName(for: fonts[row]) , size: 40.0)
-
-        } else if colorTextField.isFirstResponder {
-            colorTextField.text = colorsArray[row]
-             pickedColor = colorTextField.text ?? "White"
-            attributeTextDictionary[NSAttributedStringKey.foregroundColor.rawValue] = getColor(fromString: colorsArray[row])
-
-        } else if borderColorTextField.isFirstResponder {
-            borderColorTextField.text = colorsArray[row]
-            pickedBorderColor = borderColorTextField.text ?? "Black"
-            
-            attributeTextDictionary[NSAttributedStringKey.strokeColor.rawValue] = getColor(fromString: colorsArray[row])
-        } else if borderWidthTextField.isFirstResponder {
-            borderWidthTextField.text = String(widthArray[row] * -1)
-            pickedBorderWidth = borderWidthTextField.text ?? "2"
-            attributeTextDictionary[NSAttributedStringKey.strokeWidth.rawValue] = widthArray[row]
-        }
-        
-//             sampleLabel.attributedText = NSAttributedString(string: "Sample Text", attributes: attributeTextDictionary )
-        sampleTextField.text = "Sample Text"
-        sampleTextField.defaultTextAttributes = attributeTextDictionary
-    }
-
-    
+    //MARK: - Attributes Helper methods
     func getColor(fromString string: String) -> UIColor {
         var color = UIColor.white
         
@@ -202,6 +96,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             color = UIColor.red
         case "Blue":
             color = UIColor.blue
+        case "Green":
+            color = UIColor.green
         default:
             color = UIColor.white
         }
@@ -218,36 +114,122 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             fontName = "ChalkboardSE-Bold"
         case "Futura":
             fontName = "Futura-CondensedExtraBold"
+        case "Impact":
+            fontName = "Impact"
         default:
                fontName = "HelveticaNeue-CondensedBlack"
         }
-        
         return fontName
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        var row = 0
-        
-        if fontTextField.isFirstResponder {
-            row = fonts.index(of: pickedFont) ?? 0
-        } else if colorTextField.isFirstResponder {
-             row = colorsArray.index(of: pickedColor) ?? 0
-        } else if borderColorTextField.isFirstResponder {
-            row = colorsArray.index(of: pickedBorderColor) ?? 0
-        } else if borderWidthTextField.isFirstResponder {
-            let value = Int(pickedBorderWidth) ?? 2 * -1
-            row = widthArray.index(of: value) ?? 0
-        }
-        
-        picker.selectRow(row, inComponent: 0, animated: true)
-        
     }
 }
 
 
-enum Width : Int {
-    case Light = 1
-    case Medium = 2
-    case Thick = 3
+extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    fileprivate func setupPicker() {
+        //picker delegate & data source
+        picker.delegate = self
+        picker.dataSource = self
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if fontTextField.isFirstResponder {
+            return fonts.count
+        } else if colorTextField.isFirstResponder || borderColorTextField.isFirstResponder {
+            return colorsArray.count
+        } else if borderWidthTextField.isFirstResponder {
+            return widthArray.count
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if fontTextField.isFirstResponder {
+            return fonts[row]
+        } else if colorTextField.isFirstResponder || borderColorTextField.isFirstResponder {
+            return colorsArray[row]
+        } else if borderWidthTextField.isFirstResponder {
+            return String(widthArray[row] * -1)
+        }
+        return "Error"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //Check the input text field and set corresponding attribute
+        if fontTextField.isFirstResponder {
+            fontTextField.text = fonts[row]
+            pickedFont = fontTextField.text ?? "HelveticaNeue"
+            attributeTextDictionary[NSAttributedStringKey.font.rawValue] = UIFont(name: getFontName(for: fonts[row]) , size: 40.0)
+        } else if colorTextField.isFirstResponder {
+            colorTextField.text = colorsArray[row]
+            pickedColor = colorTextField.text ?? "White"
+            attributeTextDictionary[NSAttributedStringKey.foregroundColor.rawValue] = getColor(fromString: colorsArray[row])
+        } else if borderColorTextField.isFirstResponder {
+            borderColorTextField.text = colorsArray[row]
+            pickedBorderColor = borderColorTextField.text ?? "Black"
+            attributeTextDictionary[NSAttributedStringKey.strokeColor.rawValue] = getColor(fromString: colorsArray[row])
+        } else if borderWidthTextField.isFirstResponder {
+            borderWidthTextField.text = String(widthArray[row] * -1)
+            pickedBorderWidth = borderWidthTextField.text ?? "2"
+            attributeTextDictionary[NSAttributedStringKey.strokeWidth.rawValue] = widthArray[row]
+        }
+        sampleTextField.defaultTextAttributes = attributeTextDictionary
+    }
+}
+
+
+extension SettingsViewController: UITextFieldDelegate {
+    
+    func setupTextFields() {
+        //setting up the view controller as delegates of the text fields
+        fontTextField.delegate = self
+        colorTextField.delegate = self
+        borderColorTextField.delegate = self
+        borderWidthTextField.delegate = self
+        
+        //assign default values for the fields when UI loads for first time
+        fontTextField.text = pickedFont
+        colorTextField.text = pickedColor
+        borderWidthTextField.text = pickedBorderWidth
+        borderColorTextField.text = pickedBorderColor
+        
+        //setup input views for the text fields
+        fontTextField.inputView = picker
+        colorTextField.inputView = picker
+        borderColorTextField.inputView = picker
+        borderWidthTextField.inputView = picker
+        
+        //setup input accessory views
+        fontTextField.inputAccessoryView = toolbar
+        colorTextField.inputAccessoryView = toolbar
+        borderColorTextField.inputAccessoryView = toolbar
+        borderWidthTextField.inputAccessoryView = toolbar
+        
+        //Setup sample field's properties
+        sampleTextField.textAlignment = .right
+        sampleTextField.contentVerticalAlignment = .center
+        sampleTextField.defaultTextAttributes = attributeTextDictionary
+        sampleTextField.isUserInteractionEnabled = false
+    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        var row = 0
+        if fontTextField.isFirstResponder {
+            row = fonts.index(of: pickedFont) ?? 0
+        } else if colorTextField.isFirstResponder {
+            row = colorsArray.index(of: pickedColor) ?? 0
+        } else if borderColorTextField.isFirstResponder {
+            row = colorsArray.index(of: pickedBorderColor) ?? 0
+        } else if borderWidthTextField.isFirstResponder {
+            let value = (Int(pickedBorderWidth) ?? 2) * -1
+            row = widthArray.index(of: value) ?? 0
+        }
+        picker.selectRow(row, inComponent: 0, animated: true)
+    }
 }
 
