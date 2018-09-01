@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5038C6A82137B1640019C5C8 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038C6A72137B1640019C5C8 /* Meme.swift */; };
-		5038C6AC2137CF1B0019C5C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5038C6AB2137CF1B0019C5C8 /* Assets.xcassets */; };
 		505D1A362138E89500B83936 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D1A352138E89500B83936 /* SettingsViewController.swift */; };
 		505D1A382138FAAC00B83936 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D1A372138FAAC00B83936 /* CustomTextField.swift */; };
 		506504CB213A3AEA00DADC8F /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 506504CA213A3AEA00DADC8F /* Impact.ttf */; };
+		506504D0213A646400DADC8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506504CF213A646300DADC8F /* Assets.xcassets */; };
 		5078DF4B2135150200268D0A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078DF4A2135150200268D0A /* HomeViewController.swift */; };
 		509220BB2134F8F800766E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509220BA2134F8F800766E30 /* AppDelegate.swift */; };
 		509220C02134F8F800766E30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509220BE2134F8F800766E30 /* Main.storyboard */; };
@@ -20,10 +20,10 @@
 
 /* Begin PBXFileReference section */
 		5038C6A72137B1640019C5C8 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
-		5038C6AB2137CF1B0019C5C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505D1A352138E89500B83936 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		505D1A372138FAAC00B83936 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		506504CA213A3AEA00DADC8F /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
+		506504CF213A646300DADC8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5078DF4A2135150200268D0A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		509220B72134F8F800766E30 /* MemeMe v1.0 - Udacity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MemeMe v1.0 - Udacity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		509220BA2134F8F800766E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				506504CC213A54EF00DADC8F /* Controller */,
 				509220C62134F8FA00766E30 /* Info.plist */,
 				509220BA2134F8F800766E30 /* AppDelegate.swift */,
-				5038C6AB2137CF1B0019C5C8 /* Assets.xcassets */,
+				506504CF213A646300DADC8F /* Assets.xcassets */,
 				506504C9213A3AAA00DADC8F /* Font Files */,
 			);
 			path = "MemeMe v1.0 - Udacity";
@@ -168,7 +168,7 @@
 			files = (
 				506504CB213A3AEA00DADC8F /* Impact.ttf in Resources */,
 				509220C52134F8FA00766E30 /* LaunchScreen.storyboard in Resources */,
-				5038C6AC2137CF1B0019C5C8 /* Assets.xcassets in Resources */,
+				506504D0213A646400DADC8F /* Assets.xcassets in Resources */,
 				509220C02134F8F800766E30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

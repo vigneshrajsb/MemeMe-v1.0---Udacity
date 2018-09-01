@@ -48,11 +48,11 @@
                                 <rect key="frame" x="0.0" y="204" width="375" height="414"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gog-51-wcw">
-                                        <rect key="frame" x="8" y="359" width="358.66666666666669" height="58.666666666666686"/>
+                                        <rect key="frame" x="8" y="359" width="358.66666666666669" height="60"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Bottom text for Meme">
+                                            <fragment content="TEXT">
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="40" name="Impact"/>
@@ -67,7 +67,7 @@
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Top text for Meme">
+                                            <fragment content="TEXT">
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="40" name="Impact"/>
@@ -77,7 +77,7 @@
                                         </attributedString>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-Ww-43F">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-Ww-43F">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
                                     </imageView>
                                 </subviews>
@@ -170,17 +170,12 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-cN-h3Z">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Back to Meme" id="sEu-Kb-bRa">
+                                    <barButtonItem title="Back to Editor" id="sEu-Kb-bRa">
                                         <connections>
                                             <action selector="backPressed:" destination="hBW-kS-Pmz" id="Adf-LA-xP3"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0GM-QE-Vtq"/>
-                                    <barButtonItem title="Done" id="4h7-O0-fia">
-                                        <connections>
-                                            <action selector="doneTapped:" destination="hBW-kS-Pmz" id="IFv-gc-S87"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU0-4g-afA" userLabel="Settings View">
@@ -278,14 +273,14 @@
                                     <constraint firstAttribute="height" constant="65" id="r20-td-C2c"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Sample Text">
+                                    <fragment content="SAMPLE TEXT">
                                         <attributes>
                                             <font key="NSFont" size="40" name="HelveticaNeue-CondensedBlack"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,7 +300,6 @@
                         <outlet property="borderWidthTextField" destination="kva-SR-edd" id="Zew-tV-Sxi"/>
                         <outlet property="colorTextField" destination="OPB-XH-Q9O" id="vF3-AL-D5j"/>
                         <outlet property="fontTextField" destination="uR8-PD-fB9" id="FDN-zD-iSf"/>
-                        <outlet property="landscapeDoneButton" destination="4h7-O0-fia" id="zJP-Kv-87c"/>
                         <outlet property="sampleTextField" destination="k8S-A6-ytl" id="sZj-Xw-HfN"/>
                     </connections>
                 </viewController>
@@ -315,6 +309,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultImage" width="740" height="652"/>
         <image name="text" width="30" height="30"/>
     </resources>
 </document>

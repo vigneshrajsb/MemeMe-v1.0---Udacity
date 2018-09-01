@@ -53,13 +53,15 @@ class HomeViewController: UIViewController {
     //MARK: - UI Setup methods
     func initializeUI() {
         view.backgroundColor = .white
+        memeView.translatesAutoresizingMaskIntoConstraints = false
+        selectedImageView.translatesAutoresizingMaskIntoConstraints = false
         
         //Setup Text Fields
         topTextField.borderStyle = .none
         bottomTextField.borderStyle = UITextBorderStyle.none
         bottomTextField.textAlignment = .center
-        topTextField.text = "Top text for Meme"
-        bottomTextField.text = "Bottom text for Meme"
+        topTextField.text = "TOP TEXT"
+        bottomTextField.text = "BOTTOM TEXT"
         
         //Attributed Text field's alignment
         let textAlignment = NSMutableParagraphStyle()
@@ -70,7 +72,7 @@ class HomeViewController: UIViewController {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         //setup Button states
-        if selectedImageView.image == nil {
+        if selectedImageView.image == nil || selectedImageView.image == #imageLiteral(resourceName: "defaultImage") {
             shareButton.isEnabled = false
             cancelButton.isEnabled = false
             settingsButton.isEnabled = false
@@ -82,8 +84,8 @@ class HomeViewController: UIViewController {
             settingsButton.isEnabled = true
             topTextField.isHidden = false
             bottomTextField.isHidden = false
-            view.bringSubview(toFront: topTextField)
-            view.bringSubview(toFront: bottomTextField)
+            memeView.bringSubview(toFront: topTextField)
+            memeView.bringSubview(toFront: bottomTextField)
         }
     }
     
@@ -122,7 +124,10 @@ class HomeViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-          setupLandscapeLayoutConstraints()
+            let value = UIDevice.current.orientation.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+            HomeViewController.attemptRotationToDeviceOrientation()
+            setupLandscapeLayoutConstraints()
         } else {
             setupPortraitLayoutConstraints()
         }
@@ -187,8 +192,16 @@ class HomeViewController: UIViewController {
     
     //MARK: - Delete press action
     @IBAction func cancelTapped(_ sender: Any) {
-        selectedImageView.image = nil
-        initializeUI()
+        
+        let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete the current Meme?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.selectedImageView.image = #imageLiteral(resourceName: "defaultImage")
+            self.initializeUI()
+            self.viewWillLayoutSubviews()
+        }
+        alert.addAction(deleteAction)
+        present(alert, animated: true, completion: nil)
+      
     }
     
     
@@ -242,7 +255,7 @@ extension HomeViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let existingText = textField.text ?? ""
-        if existingText == "Top text for Meme" || existingText == "Bottom text for Meme" {
+        if existingText == "TOP TEXT" || existingText == "BOTTOM TEXT" {
                    textField.text = ""
         }
            setTextFieldAttributes()

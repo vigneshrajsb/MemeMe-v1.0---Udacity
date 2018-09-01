@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,24 +19,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTr-LH-sy5">
-                                <rect key="frame" x="132.33333333333334" y="390.33333333333331" width="111.33333333333334" height="31.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="2te-NU-ALK">
+                                <rect key="frame" x="91" y="358" width="192" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="Bo1-4P-iTP"/>
+                                    <constraint firstAttribute="width" secondItem="2te-NU-ALK" secondAttribute="height" multiplier="192:97" id="Pxb-t1-Wer"/>
+                                    <constraint firstAttribute="width" constant="192" id="ugI-Vs-aOh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sTr-LH-sy5" firstAttribute="centerX" secondItem="iAg-FR-2Xy" secondAttribute="centerX" id="cke-52-lHM"/>
-                            <constraint firstItem="sTr-LH-sy5" firstAttribute="centerY" secondItem="iAg-FR-2Xy" secondAttribute="centerY" id="yPB-PU-QnJ"/>
+                            <constraint firstItem="2te-NU-ALK" firstAttribute="centerY" secondItem="iAg-FR-2Xy" secondAttribute="centerY" id="f6Z-DS-6AA"/>
+                            <constraint firstItem="2te-NU-ALK" firstAttribute="centerX" secondItem="iAg-FR-2Xy" secondAttribute="centerX" id="xFJ-2I-n2x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DCX-zs-2uv"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AK2-Xj-OdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="413"/>
+            <point key="canvasLocation" x="512.79999999999995" y="412.3152709359606"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchImage" width="296" height="173"/>
+    </resources>
 </document>

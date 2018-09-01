@@ -22,15 +22,15 @@ var pickedColor = "White"
 var pickedBorderColor = "Black"
 var pickedBorderWidth = "2"
 
+
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var fontTextField: CustomTextField!
     @IBOutlet weak var colorTextField: CustomTextField!
     @IBOutlet weak var borderColorTextField: CustomTextField!
     @IBOutlet weak var borderWidthTextField: CustomTextField!
-    @IBOutlet weak var landscapeDoneButton: UIBarButtonItem!
     @IBOutlet weak var sampleTextField: UITextField!
-    
     let picker = UIPickerView()
     let toolbar = UIToolbar()
     
@@ -61,20 +61,12 @@ class SettingsViewController: UIViewController {
     
     //MARK: - Modify UI when the device changes orientation
     override func viewWillLayoutSubviews() {
-        let isLandscape = UIDevice.current.orientation.isLandscape
-        landscapeDoneButton.isEnabled = isLandscape
-        landscapeDoneButton.tintColor = isLandscape ? nil : .clear
-        fontTextField.inputAccessoryView = isLandscape ? nil : toolbar
-        colorTextField.inputAccessoryView = isLandscape ? nil : toolbar
-        borderColorTextField.inputAccessoryView = isLandscape ? nil : toolbar
-        borderWidthTextField.inputAccessoryView = isLandscape ? nil : toolbar
+        let value = UIDevice.current.orientation.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        SettingsViewController.attemptRotationToDeviceOrientation()
     }
     
     //MARK: - Actions for Bar buttons
-    @IBAction func doneTapped(_ sender: Any) {
-        dismissKeyboard()
-    }
-    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -130,6 +122,7 @@ extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         //picker delegate & data source
         picker.delegate = self
         picker.dataSource = self
+        picker.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -203,11 +196,7 @@ extension SettingsViewController: UITextFieldDelegate {
         borderColorTextField.inputView = picker
         borderWidthTextField.inputView = picker
         
-        //setup input accessory views
-        fontTextField.inputAccessoryView = toolbar
-        colorTextField.inputAccessoryView = toolbar
-        borderColorTextField.inputAccessoryView = toolbar
-        borderWidthTextField.inputAccessoryView = toolbar
+        setupInputAccesoryForTextField()
         
         //Setup sample field's properties
         sampleTextField.textAlignment = .right
@@ -216,6 +205,14 @@ extension SettingsViewController: UITextFieldDelegate {
         sampleTextField.isUserInteractionEnabled = false
     }
     
+    func setupInputAccesoryForTextField() {
+        //setup input accessory views
+        fontTextField.inputAccessoryView = toolbar
+        colorTextField.inputAccessoryView = toolbar
+        borderColorTextField.inputAccessoryView = toolbar
+        borderWidthTextField.inputAccessoryView = toolbar
+    }
+
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var row = 0
@@ -231,5 +228,7 @@ extension SettingsViewController: UITextFieldDelegate {
         }
         picker.selectRow(row, inComponent: 0, animated: true)
     }
+    
+ 
 }
 
