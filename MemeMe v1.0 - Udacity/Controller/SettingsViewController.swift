@@ -14,7 +14,7 @@ var attributeTextDictionary : [String:Any]  = [
     NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
     NSAttributedStringKey.font.rawValue : UIFont(name: "Impact", size: 40) ?? UIFont.systemFont(ofSize: 40),
     NSAttributedStringKey.strokeWidth.rawValue : -2.0
-    ]
+]
 
 //Initializing values to use for default attributes
 var pickedFont = "Impact"
@@ -22,10 +22,8 @@ var pickedColor = "White"
 var pickedBorderColor = "Black"
 var pickedBorderWidth = "2"
 
-
-
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var fontTextField: CustomTextField!
     @IBOutlet weak var colorTextField: CustomTextField!
     @IBOutlet weak var borderColorTextField: CustomTextField!
@@ -117,7 +115,7 @@ class SettingsViewController: UIViewController {
         case "Impact":
             fontName = "Impact"
         default:
-               fontName = "HelveticaNeue-CondensedBlack"
+            fontName = "HelveticaNeue-CondensedBlack"
         }
         return fontName
     }
@@ -221,7 +219,6 @@ extension SettingsViewController: UITextFieldDelegate {
         borderColorTextField.inputAccessoryView = toolbar
         borderWidthTextField.inputAccessoryView = toolbar
     }
-
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var row = 0
@@ -238,6 +235,6 @@ extension SettingsViewController: UITextFieldDelegate {
         picker.selectRow(row, inComponent: 0, animated: true)
     }
     
- 
+    
 }
 

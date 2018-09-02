@@ -29,32 +29,41 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var constraintMemeViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var constraintMemeViewLeading: NSLayoutConstraint!
     
-    
     let imagePicker = UIImagePickerController()
- 
     
+    //Array to save Memes
+    var memeArray = [Meme]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setImagePickerDelegate()
-        setTextFieldDelegateAndAttribute()
-        setObserversForKeyboard()
         initializeUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setObserversForKeyboard()
+        setTextFieldAttributes()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //removeObserversForKeyboardNotification()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setTextFieldAttributes()
+        removeObserversForKeyboard()
     }
     
     //MARK: - UI Setup methods
     func initializeUI() {
+        setImagePickerDelegate()
+        setTextFieldDelegateAndAttribute()
+        
         view.backgroundColor = .white
         memeView.translatesAutoresizingMaskIntoConstraints = false
         selectedImageView.translatesAutoresizingMaskIntoConstraints = false
+        //making Content mode as Aspect Fill as i dont know how to get square images from iPad's image picker :(. todo item
+        if UIDevice.current.userInterfaceIdiom == .pad {
+        selectedImageView.contentMode = .scaleAspectFill
+        } else {
+            selectedImageView.contentMode = .scaleAspectFit
+        }
         
         //Setup Text Fields
         topTextField.borderStyle = .none
@@ -97,7 +106,7 @@ class HomeViewController: UIViewController {
         let bottomToolbarHeight = bottomToolbar.frame.height
         
         let const = (height - (topToolBarHeight + bottomToolbarHeight) - width) / 2
-
+        
         //set calculated Layout
         constraintTopBartoMemeView.constant = const
         constraintMemeViewTobottomBar.constant = const
@@ -105,16 +114,24 @@ class HomeViewController: UIViewController {
         constraintMemeViewLeading.constant = 0
     }
     
+    //To be used for identifying the image size ratio to calculate autoloayout constraints. todo
+    func getImageRatio() -> CGFloat {
+        var imageRatio: CGFloat = 0.0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            imageRatio = ((selectedImageView.image?.size.width ?? 0) / (selectedImageView.image?.size.height ?? 1))
+        }
+        return imageRatio
+    }
     
     func setupLandscapeLayoutConstraints() {
-        //calculate constraints of the Meme View from sizes of other elements
+        //calculate constraints of the Meme View
         let height = view.safeAreaLayoutGuide.layoutFrame.height
         let width = view.safeAreaLayoutGuide.layoutFrame.width
         let topToolbarHeight = topToolBar.frame.height
         let bottomToolbarHeight = bottomToolbar.frame.height
         
         let const = (width - (height - topToolbarHeight - bottomToolbarHeight)) / 2
-
+        
         //set calculated Layout
         constraintTopBartoMemeView.constant = 0
         constraintMemeViewTobottomBar.constant = 0
@@ -137,12 +154,18 @@ class HomeViewController: UIViewController {
     func setImagePickerDelegate() {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+
     }
     
     //MARK: - Keyboard's Observer methods
     func setObserversForKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    public func removeObserversForKeyboard(){
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow , object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide , object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -162,16 +185,11 @@ class HomeViewController: UIViewController {
         return 0
     }
     
-    func removeObserversForKeyboardNotification(){
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow , object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide , object: nil)
-    }
-    
     //MARK: - Bottom Toolbar Button Actions
     @IBAction func albumSelected(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        
+
     }
     
     @IBAction func cameraSelected(_ sender: Any) {
@@ -184,9 +202,17 @@ class HomeViewController: UIViewController {
     @IBAction func actionTapped(_ sender: Any) {
         if let _ = selectedImageView.image {
             let meme: UIImage = createMemedImage()
-            
             let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+            activityController.completionWithItemsHandler = { (activityTypeChosen, completed , items, error) in
+                if completed {
+                    self.saveMeme()
+                }
+            }
             present(activityController, animated: true, completion: nil)
+            if let popOver = activityController.popoverPresentationController {
+                popOver.sourceView = self.view
+                popOver.barButtonItem = self.shareButton
+            }
         }
     }
     
@@ -201,15 +227,15 @@ class HomeViewController: UIViewController {
         }
         alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
-      
     }
     
-    
-    //    func save() {
-    //        if let image = selectedImageView.image {
-    //        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: image, memedImage: image)
-    //        }
-    //    }
+    //MARK: - Save current Meme to an array
+    func saveMeme() {
+        if let image = selectedImageView.image {
+            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: image, memedImage: image)
+            memeArray.append(meme)
+        }
+    }
     
     //MARK: - Create Meme Image from the View
     func createMemedImage() -> UIImage {
@@ -221,7 +247,6 @@ class HomeViewController: UIViewController {
         UIGraphicsEndImageContext()
         return image
     }
-    
 }
 
 //MARK: - Extension for ImagePicker Delegate methods
@@ -256,9 +281,9 @@ extension HomeViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let existingText = textField.text ?? ""
         if existingText == "TOP TEXT" || existingText == "BOTTOM TEXT" {
-                   textField.text = ""
+            textField.text = ""
         }
-           setTextFieldAttributes()
+        setTextFieldAttributes()
     }
     
     
